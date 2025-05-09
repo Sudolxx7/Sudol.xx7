@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Sushi & Bar - Experiência Japonesa Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .menu-item:hover .menu-overlay {
+            opacity: 1;
+        }
+        
+        .menu-overlay {
+            transition: opacity 0.3s ease;
+        }
+        
+        .drink-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .testimonial-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ef4444;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-fish text-red-500 text-2xl mr-2"></i>
+                <span class="text-xl font-bold text-gray-800">Sakura Sushi & Bar</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active-nav text-gray-800 font-medium">Início</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Sobre</a>
+                <a href="#menu" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Menu</a>
+                <a href="#gallery" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Galeria</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Contato</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#reservation" class="hidden md:block bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full font-medium transition duration-300">Reservas</a>
+                <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full absolute left-0 top-full shadow-lg">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-800 font-medium py-2 border-b border-gray-100">Início</a>
+                <a href="#about" class="text-gray-600 hover:text-gray-800 font-medium py-2 border-b border-gray-100">Sobre</a>
+                <a href="#menu" class="text-gray-600 hover:text-gray-800 font-medium py-2 border-b border-gray-100">Menu</a>
+                <a href="#gallery" class="text-gray-600 hover:text-gray-800 font-medium py-2 border-b border-gray-100">Galeria</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-800 font-medium py-2 border-b border-gray-100">Contato</a>
+                <a href="#reservation" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full font-medium text-center transition duration-300">Reservas</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 font-serif">Sakura Sushi & Bar</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Experiência autêntica da culinária japonesa com um toque contemporâneo e drinks exclusivos.</p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                <a href="#menu" class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full font-medium transition duration-300">Ver Menu</a>
+                <a href="#reservation" class="bg-transparent hover:bg-white hover:text-gray-900 border-2 border-white text-white px-8 py-3 rounded-full font-medium transition duration-300">Reservar Mesa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="Chef preparando sushi" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">Nossa História</h2>
+                    <p class="text-gray-600 mb-6">Fundado em 2010, o Sakura Sushi & Bar nasceu da paixão pela culinária japonesa autêntica combinada com a criatividade contemporânea. Nosso chef, formado em Tóquio, traz anos de experiência e técnicas tradicionais para criar pratos que são verdadeiras obras de arte.</p>
+                    <p class="text-gray-600 mb-8">Nossa missão é proporcionar uma experiência gastronômica memorável, onde cada detalhe - desde a seleção dos ingredientes até a apresentação final - é cuidadosamente planejado para encantar nossos clientes.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-red-500 text-xl mr-2"></i>
+                            <span class="font-medium">Ingredientes frescos</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-red-500 text-xl mr-2"></i>
+                            <span class="font-medium">Técnicas tradicionais</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-red-500 text-xl mr-2"></i>
+                            <span class="font-medium">Ambiente sofisticado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-red-500 text-xl mr-2"></i>
+                            <span class="font-medium">Drinks exclusivos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Nosso Menu</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore nossa seleção de pratos japoneses premium e drinks artesanais criados para complementar sua experiência gastronômica.</p>
+            </div>
+            
+            <!-- Menu Tabs -->
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button id="sushi-tab" class="px-6 py-3 text-sm font-medium rounded-l-lg bg-red-500 text-white focus:outline-none">
+                        Sushi & Sashimi
+                    </button>
+                    <button id="hot-tab" class="px-6 py-3 text-sm font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none">
+                        Pratos Quentes
+                    </button>
+                    <button id="drinks-tab" class="px-6 py-3 text-sm font-medium rounded-r-lg bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none">
+                        Drinks & Bebidas
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sushi Menu Content -->
+            <div id="sushi-content" class="menu-content grid md:grid-cols-2 gap-8">
+                <div class="menu-item bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd0c2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sushi Variado" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sakura Special</h3>
+                        <p class="text-gray-600 mb-4">Seleção premium de 12 peças incluindo salmão, atum, camarão e ouriço-do-mar.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 89,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
+                        <button class="bg-white text-red-500 px-6 py-3 rounded-full font-medium">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sashimi" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sashimi Premium</h3>
+                        <p class="text-gray-600 mb-4">10 fatias finas de peixe fresco selecionado pelo chef, servido com wasabi e gengibre.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 79,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
+                        <button class="bg-white text-red-500 px-6 py-3 rounded-full font-medium">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Uramaki" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Uramaki Especial</h3>
+                        <p class="text-gray-600 mb-4">8 peças de uramaki recheado com salmão, cream cheese e cebolinha, envolto em gergelim.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 59,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
+                        <button class="bg-white text-red-500 px-6 py-3 rounded-full font-medium">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1617196904929-71807d6a87f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Temaki" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Temaki Trio</h3>
+                        <p class="text-gray-600 mb-4">3 cones de alga nori recheados com salmão, kani e pepino, servidos com molho especial.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 49,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
+                        <button class="bg-white text-red-500 px-6 py-3 rounded-full font-medium">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hot Dishes Content (Hidden by default) -->
+            <div id="hot-content" class="menu-content hidden grid md:grid-cols-2 gap-8">
+                <!-- Hot dishes items would go here -->
+                <div class="menu-item bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Yakissoba" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Yakissoba Especial</h3>
+                        <p class="text-gray-600 mb-4">Macarrão salteado com legumes frescos, carne ou frango e molho especial.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 45,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
+                        <button class="bg-white text-red-500 px-6 py-3 rounded-full font-medium">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tempurá" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Tempurá Misto</h3>
+                        <p class="text-gray-600 mb-4">Seleção de legumes e camarões empanados na massa tempurá, servido com molho tentsuyu.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 39,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
+                        <button class="bg-white text-red-500 px-6 py-3 rounded-full font-medium">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1611270638427-9a7df7c2ecf3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lamen" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Lamen Tradicional</h3>
+                        <p class="text-gray-600 mb-4">Macarrão em caldo de porco, acompanhado de ovos cozidos, nori e fatias de porco.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 42,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
+                        <button class="bg-white text-red-500 px-6 py-3 rounded-full font-medium">Ver Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1601050691231-d3c8dfbaf70b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Teppanyaki" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Teppanyaki de Carne</h3>
+                        <p class="text-gray-600 mb-4">Carne bovina premium grelhada na chapa com legumes e molho especial.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 69,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
+                        <button class="bg-white text-red-500 px-6 py-3 rounded-full font-medium">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Drinks Content (Hidden by default) -->
+            <div id="drinks-content" class="menu-content hidden grid md:grid-cols-2 gap-8">
+                <div class="drink-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1557&q=80" alt="Sakura Martini" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sakura Martini</h3>
+                        <p class="text-gray-600 mb-4">Gin, licor de sakura, suco de limão siciliano e xarope de flor de cerejeira.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 32,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drink-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Wasabi Margarita" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Wasabi Margarita</h3>
+                        <p class="text-gray-600 mb-4">Tequila prata, triple sec, suco de limão e um toque de wasabi para um kick especial.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 34,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drink-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1557&q=80" alt="Umeshu Sour" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Umeshu Sour</h3>
+                        <p class="text-gray-600 mb-4">Licor de ameixa japonesa, bourbon, suco de limão e clara de ovo para textura cremosa.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 29,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drink-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Matcha Mojito" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Matcha Mojito</h3>
+                        <p class="text-gray-600 mb-4">Rum branco, matcha, hortelã, limão e água com gás para um drink refrescante.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-500 font-bold text-lg">R$ 31,90</span>
+                            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm transition duration-300">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-full font-medium transition duration-300">Ver Menu Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Nossa Galeria</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Um vislumbre da experiência que oferecemos em nosso restaurante.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1580828343064-fde4fc206bc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Ambiente do restaurante" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1551504734-4eeac0a9c043?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bar de drinks" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Chef preparando sushi" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Prato de sushi" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Prato quente" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1557&q=80" alt="Drinks especiais" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">O Que Dizem Nossos Clientes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Experiências reais de quem já nos visitou.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente 1">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium">Ana Carolina</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"O melhor sushi que já comi na cidade! A apresentação dos pratos é impecável e o sabor é incrível. Os drinks combinam perfeitamente com a comida. Recomendo o Sakura Special!"</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Cliente 2">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium">Ricardo Almeida</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Ambiente sofisticado e atendimento excelente. O Uramaki Especial é divino e o Wasabi Margarita é uma experiência única. Volto sempre que posso!"</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente 3">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium">Fernanda Gomes</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Celebrei meu aniversário no Sakura e foi perfeito! O chef preparou um menu especial para nós e os drinks eram lindos e saborosos. O Matcha Mojito é meu favorito!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-20 bg-red-500 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Faça sua Reserva</h2>
+                    <p class="text-red-100 max-w-2xl mx-auto">Garanta sua mesa em nosso restaurante para uma experiência gastronômica inesquecível.</p>
+                </div>
+                
+                <form class="bg-white rounded-lg shadow-xl p-8 text-gray-800">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Nome Completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium mb-2">Telefone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        <div>
+                            <label for="guests" class="block text-sm font-medium mb-2">Número de Pessoas</label>
+                            <select id="guests" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                                <option value="1">1 Pessoa</option>
+                                <option value="2">2 Pessoas</option>
+                                <option value="3">3 Pessoas</option>
+                                <option value="4">4 Pessoas</option>
+                                <option value="5">5 Pessoas</option>
+                                <option value="6+">6+ Pessoas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="date" class="block text-sm font-medium mb-2">Data</label>
+                            <input type="date" id="date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                        </div>
+                        <div>
+                            <label for="time" class="block text-sm font-medium mb-2">Horário</label>
+                            <select id="time" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <option value="21:00">21:00</option>
+                                <option value="21:30">21:30</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="special-requests" class="block text-sm font-medium mb-2">Pedidos Especiais</label>
+                        <textarea id="special-requests" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full font-medium transition duration-300 shadow-lg">Reservar Mesa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">Entre em Contato</h2>
+                    <p class="text-gray-600 mb-8">Estamos sempre disponíveis para tirar suas dúvidas, receber sugestões ou agendar seu evento especial.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-red-500 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Endereço</h4>
+                                <p class="text-gray-600">Rua das Cerejeiras, 123 - Jardim Japão<br>São Paulo - SP</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt text-red-500 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Telefone</h4>
+                                <p class="text-gray-600">(11) 1234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-red-500 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email</h4>
+                                <p class="text-gray-600">contato@sakurasushi.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-red-500 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Horário de Funcionamento</h4>
+                                <p class="text-gray-600">
+                                    Terça a Quinta: 18h - 23h<br>
+                                    Sexta e Sábado: 18h - 00h<br>
+                                    Domingo: 18h - 22h<br>
+                                    Segunda: Fechado
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Siga-nos</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-100 hover:bg-red-500 hover:text-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-red-500 hover:text-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-red-500 hover:text-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-tripadvisor"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md h-full">
+                        <h3 class="text-2xl font-bold mb-6 font-serif">Envie uma Mensagem</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="contact-name" class="block text-sm font-medium mb-2">Nome</label>
+                                <input type="text" id="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-email" class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" id="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="contact-subject" class="block text-sm font-medium mb-2">Assunto</label>
+                                <input type="text" id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="contact-message" class="block text-sm font-medium mb-2">Mensagem</label>
+                                <textarea id="contact-message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+                            </div>
+                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-medium transition duration-300 w-full">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.075426745292!2d-46.6534269241647!3d-23.56573436174049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1685477356784!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Sakura Sushi & Bar</h3>
+                    <p class="text-gray-400">Experiência autêntica da culinária japonesa com um toque contemporâneo e drinks exclusivos.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Início</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">Sobre</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-white transition duration-300">Menu</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition duration-300">Galeria</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Horário</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Terça a Quinta: 18h - 23h</li>
+                        <li>Sexta e Sábado: 18h - 00h</li>
+                        <li>Domingo: 18h - 22h</li>
+                        <li>Segunda: Fechado</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Inscreva-se para receber nossas novidades e promoções especiais.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Seu email" class="px-4 py-2 rounded-l-md focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-r-md transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Sakura Sushi & Bar. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-tripadvisor"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-red-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Menu Tabs
+        const sushiTab = document.getElementById('sushi-tab');
+        const hotTab = document.getElementById('hot-tab');
+        const drinksTab = document.getElementById('drinks-tab');
+        
+        const sushiContent = document.getElementById('sushi-content');
+        const hotContent = document.getElementById('hot-content');
+        const drinksContent = document.getElementById('drinks-content');
+        
+        sushiTab.addEventListener('click', () => {
+            sushiTab.classList.remove('bg-gray-200', 'text-gray-700');
+            sushiTab.classList.add('bg-red-500', 'text-white');
+            hotTab.classList.remove('bg-red-500', 'text-white');
+            hotTab.classList.add('bg-gray-200', 'text-gray-700');
+            drinksTab.classList.remove('bg-red-500', 'text-white');
+            drinksTab.classList.add('bg-gray-200', 'text-gray-700');
+            
+            sushiContent.classList.remove('hidden');
+            hotContent.classList.add('hidden');
+            drinksContent.classList.add('hidden');
+        });
+        
+        hotTab.addEventListener('click', () => {
+            hotTab.classList.remove('bg-gray-200', 'text-gray-700');
+            hotTab.classList.add('bg-red-500', 'text-white');
+            sushiTab.classList.remove('bg-red-500', 'text-white');
+            sushiTab.classList.add('bg-gray-200', 'text-gray-700');
+            drinksTab.classList.remove('bg-red-500', 'text-white');
+            drinksTab.classList.add('bg-gray-200', 'text-gray-700');
+            
+            hotContent.classList.remove('hidden');
+            sushiContent.classList.add('hidden');
+            drinksContent.classList.add('hidden');
+        });
+        
+        drinksTab.addEventListener('click', () => {
+            drinksTab.classList.remove('bg-gray-200', 'text-gray-700');
+            drinksTab.classList.add('bg-red-500', 'text-white');
+            sushiTab.classList.remove('bg-red-500', 'text-white');
+            sushiTab.classList.add('bg-gray-200', 'text-gray-700');
+            hotTab.classList.remove('bg-red-500', 'text-white');
+            hotTab.classList.add('bg-gray-200', 'text-gray-700');
+            
+            drinksContent.classList.remove('hidden');
+            sushiContent.classList.add('hidden');
+            hotContent.classList.add('hidden');
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Highlight active navigation link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav', 'text-gray-800');
+                link.classList.add('text-gray-600');
+                
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav', 'text-gray-800');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
